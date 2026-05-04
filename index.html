@@ -1,8 +1,116 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nothing to see here.</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&display=swap');
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background-color: #f5f2ee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Sans', sans-serif;
+      padding: 2rem;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+      max-width: 480px;
+      text-align: center;
+    }
+
+    .cat-wrap {
+      position: relative;
+      width: 260px;
+      height: 260px;
+    }
+
+    .cat-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+      display: block;
+    }
+
+    .badge {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: #1a1a1a;
+      color: #f5f2ee;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      padding: 4px 9px;
+      border-radius: 20px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .headline {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .subtext {
+      font-size: 1.05rem;
+      color: #6b6560;
+      line-height: 1.65;
+      font-weight: 400;
+    }
+
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: #c9bfb5;
+      border-radius: 2px;
+    }
+
+    .footnote {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: #b0a89e;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+  </style>
 </head>
 <body>
+  <div class="container">
+    <div class="cat-wrap">
+      <img src="uploads/c6b32c41011a50e45b9bfa007c36b97d.jpg" alt="Cool cat with sunglasses" />
+      <span class="badge">classified</span>
+    </div>
+
+    <div class="headline">Nothing to see here.</div>
+
+    <div class="divider"></div>
+
+    <div class="subtext">
+      If you're looking for your proposal,<br>
+      check the link Avi sent you.
+    </div>
+
+    <div class="footnote">move along &nbsp;·&nbsp; nothing here &nbsp;·&nbsp; seriously</div>
+  </div>
 </body>
 </html>
