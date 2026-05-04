@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your YouTube Channel. Built for the Long Game. — Felix & Penn Frank</title>
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://withjcurve.com/stackoptimise" />
+<meta property="og:title" content="You Record Once. We Do the Rest." />
+<meta property="og:description" content="A short brief on what a properly managed YouTube channel looks like for StackOptimise — and how it compounds your personal brand over time without adding to your workload." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="You Record Once. We Do the Rest." />
+<meta name="twitter:description" content="A short brief on what a properly managed YouTube channel looks like for StackOptimise — and how it compounds your personal brand over time without adding to your workload." />
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #0e0e0e;
+    --paper: #f5f0e8;
+    --paper-dark: #ede7d4;
+    --accent: #c8390a;
+    --accent-muted: #e8b99a;
+    --gold: #b8933f;
+    --muted: #7a7060;
+    --rule: #cfc9b8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  .page-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 48px 100px;
+  }
+
+  /* ─── PROGRESS BAR ─── */
+  #progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--accent);
+    z-index: 1000;
+    transition: width 0.1s linear;
+  }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-28px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal-left.in { opacity: 1; transform: translateX(0); }
+
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(28px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal-right.in { opacity: 1; transform: translateX(0); }
+
+  /* stagger delays */
+  .stagger-1 { transition-delay: 0.05s; }
+  .stagger-2 { transition-delay: 0.12s; }
+  .stagger-3 { transition-delay: 0.19s; }
+  .stagger-4 { transition-delay: 0.26s; }
+  .stagger-5 { transition-delay: 0.33s; }
+  .stagger-6 { transition-delay: 0.40s; }
+  .stagger-7 { transition-delay: 0.47s; }
+  .stagger-8 { transition-delay: 0.54s; }
+
+  /* ─── ANIMATED RULE LINE ─── */
+  .rule-line {
+    width: 0;
+    height: 3px;
+    background: var(--ink);
+    transition: width 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .rule-line.in { width: 100%; }
+
+  .rule-line-thin {
+    width: 0;
+    height: 1px;
+    background: var(--rule);
+    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+  }
+  .rule-line-thin.in { width: 100%; }
+
+  /* ─── HEADER ─── */
+  .header {
+    padding-top: 32px;
+    margin-bottom: 56px;
+  }
+
+  .header-kicker {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.1s forwards;
+  }
+
+  .kicker-line {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: scaleIn 0.9s cubic-bezier(0.16,1,0.3,1) 0.4s forwards;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 5vw, 52px);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.25s forwards;
+  }
+
+  .header h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .header-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    opacity: 0;
+    animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.45s forwards;
+    flex-wrap: wrap;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scaleIn {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* ─── LEDE ─── */
+  .lede {
+    background: var(--ink);
+    color: var(--paper);
+    padding: clamp(28px, 5vw, 40px) clamp(24px, 5vw, 44px);
+    margin-bottom: 56px;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeUp 0.85s cubic-bezier(0.16,1,0.3,1) 0.6s forwards;
+  }
+
+  .lede::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 180px;
+    color: rgba(255,255,255,0.05);
+    position: absolute;
+    top: -30px; left: 20px;
+    line-height: 1;
+    pointer-events: none;
+    animation: fadeIn 1.5s ease 1.2s both;
+  }
+
+  /* shimmer sweep on lede */
+  .lede::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.04) 50%, transparent 60%);
+    transform: translateX(-100%);
+    animation: shimmer 3s ease 1.5s infinite;
+  }
+  @keyframes shimmer {
+    0%   { transform: translateX(-100%); }
+    60%  { transform: translateX(100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  .lede p {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(16px, 2.5vw, 20px);
+    font-style: italic;
+    line-height: 1.55;
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+  }
+
+  .lede p strong {
+    font-style: normal;
+    color: var(--accent-muted);
+    font-weight: 700;
+  }
+
+  /* ─── SECTION LABELS ─── */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-label::before {
+    content: attr(data-num);
+    color: var(--accent);
+    font-size: 12px;
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    margin-bottom: 64px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3.5vw, 28px);
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  section h2 em { color: var(--accent); font-style: italic; }
+
+  section p {
+    font-size: clamp(14px, 2vw, 16px);
+    color: #333;
+    margin-bottom: 16px;
+    max-width: 660px;
+  }
+
+  /* ─── BRAND PILLARS ─── */
+  .brand-pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 36px 0;
+  }
+
+  .brand-pillar {
+    border: 1px solid var(--rule);
+    padding: 28px 24px;
+    background: var(--paper-dark);
+    transition: transform 0.35s cubic-bezier(0.16,1,0.3,1),
+                box-shadow 0.35s cubic-bezier(0.16,1,0.3,1),
+                border-color 0.3s ease;
+    cursor: default;
+    will-change: transform;
+  }
+
+  .brand-pillar:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(14,14,14,0.1);
+    border-color: var(--accent);
+  }
+
+  .pillar-icon {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pillar-icon::before {
+    content: '';
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .pillar-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .pillar-body {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.65;
+  }
+
+  /* ─── INSIGHT BOX ─── */
+  .insight-box {
+    background: var(--paper-dark);
+    border-left: 3px solid var(--accent);
+    padding: 24px 28px;
+    font-size: clamp(13px, 1.8vw, 15px);
+    color: #333;
+    line-height: 1.7;
+    margin: 28px 0;
+    position: relative;
+    overflow: hidden;
+    transition: border-left-width 0.3s ease;
+  }
+  .insight-box:hover { border-left-width: 5px; }
+  .insight-box strong { color: var(--ink); font-weight: 500; }
+
+  /* ─── LIFETIME GRID ─── */
+  .lifetime-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 32px 0;
+  }
+
+  .lifetime-col {
+    background: var(--paper);
+    padding: 28px 24px;
+  }
+
+  .lifetime-col.active {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .lifetime-col-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .lifetime-col.active .lifetime-col-label { color: var(--accent-muted); }
+
+  .lifetime-col-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(17px, 2.5vw, 20px);
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .lifetime-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--rule);
+    gap: 8px;
+    align-items: baseline;
+  }
+
+  .lifetime-col.active .lifetime-row { border-bottom-color: rgba(255,255,255,0.1); }
+  .lifetime-row:last-child { border-bottom: none; }
+
+  .lifetime-key { color: var(--muted); flex-shrink: 0; }
+  .lifetime-col.active .lifetime-key { color: rgba(255,255,255,0.5); }
+  .lifetime-val { font-weight: 500; text-align: right; }
+  .lifetime-col.active .lifetime-val { color: var(--paper); }
+  .lifetime-val.good { color: #4a9c6f; }
+
+  /* animated check marks for youtube col */
+  .lifetime-col.active .lifetime-val.good {
+    position: relative;
+  }
+
+  /* ─── PROCESS STEPS ─── */
+  .process-steps {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .process-step {
+    display: flex;
+    gap: 28px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.3s ease;
+    border-radius: 2px;
+  }
+  .process-step:last-child { border-bottom: none; }
+
+  .process-step:hover .step-num {
+    color: var(--ink);
+    transform: scale(1.15);
+  }
+
+  .step-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    min-width: 28px;
+    padding-top: 3px;
+    flex-shrink: 0;
+    transition: color 0.3s ease, transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    display: inline-block;
+  }
+
+  .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(16px, 2.5vw, 18px);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .step-desc {
+    font-size: clamp(13px, 1.8vw, 14px);
+    color: #444;
+    line-height: 1.65;
+    margin-bottom: 8px;
+  }
+
+  .step-detail {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  /* ─── OWNERSHIP CARDS ─── */
+  .ownership-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 36px 0;
+  }
+
+  .ownership-card {
+    background: var(--paper);
+    padding: 24px 20px;
+    text-align: center;
+    transition: background 0.3s ease;
+    cursor: default;
+  }
+  .ownership-card:hover { background: var(--paper-dark); }
+
+  .own-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .own-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(16px, 2.5vw, 19px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .own-body {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ─── SPLIT BOX ─── */
+  .split-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 32px 0;
+  }
+
+  .split-col {
+    padding: 28px 24px;
+    background: var(--paper-dark);
+  }
+
+  .split-col.ours {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .split-col-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .split-col.ours .split-col-label { color: var(--accent-muted); }
+
+  .split-item {
+    font-size: clamp(13px, 1.8vw, 14px);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--rule);
+    color: #333;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    transition: color 0.2s ease, padding-left 0.3s ease;
+  }
+
+  .split-col.ours .split-item {
+    border-bottom-color: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.85);
+  }
+
+  .split-item:last-child { border-bottom: none; }
+  .split-item:hover { padding-left: 4px; }
+
+  .split-item::before {
+    content: '—';
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ─── CTA SECTION ─── */
+  .cta-section {
+    margin-top: 72px;
+    padding-top: 56px;
+    border-top: 3px solid var(--ink);
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 4vw, 42px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .cta-section h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .cta-section p {
+    font-size: clamp(14px, 2vw, 16px);
+    color: #444;
+    max-width: 540px;
+    margin: 0 auto 36px;
+    line-height: 1.65;
+  }
+
+  .cta-contact {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: clamp(24px, 4vw, 32px) clamp(32px, 6vw, 48px);
+    background: var(--ink);
+    color: var(--paper);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1),
+                box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
+    cursor: default;
+  }
+
+  .cta-contact::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--accent) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .cta-contact:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 60px rgba(14,14,14,0.25);
+  }
+
+  .cta-contact:hover::before { opacity: 0.12; }
+
+  .cta-contact > * { position: relative; z-index: 1; }
+
+  .from-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-muted);
+    margin-bottom: 4px;
+  }
+
+  .from-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 3vw, 24px);
+    font-weight: 700;
+  }
+
+  .from-agency {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .from-email {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent-muted);
+    margin-top: 4px;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* ─── RESPONSIVE ─── */
+
+  /* Laptop: 1024px and below */
+  @media (max-width: 1100px) {
+    .page-wrap {
+      max-width: 720px;
+      padding: 52px 40px 90px;
+    }
+  }
+
+  /* Tablet: 768px */
+  @media (max-width: 820px) {
+    .page-wrap { padding: 44px 32px 80px; }
+    .brand-pillars { grid-template-columns: 1fr; gap: 12px; }
+    .ownership-grid { grid-template-columns: 1fr; }
+    .ownership-card { text-align: left; }
+    .split-box { grid-template-columns: 1fr; }
+    .split-col.ours { order: -1; }
+    section { margin-bottom: 48px; padding-bottom: 48px; }
+  }
+
+  /* Mobile: 600px */
+  @media (max-width: 600px) {
+    .page-wrap {
+      padding: 32px 20px 72px;
+    }
+
+    .header { padding-top: 24px; margin-bottom: 40px; }
+    .header h1 { font-size: 28px; }
+    .header-meta { gap: 8px; font-size: 10px; }
+
+    .lede { padding: 24px 20px; margin-bottom: 40px; }
+    .lede p { font-size: 16px; }
+    .lede::before { font-size: 120px; }
+
+    .brand-pillars { grid-template-columns: 1fr; margin: 24px 0; }
+    .brand-pillar { padding: 22px 18px; }
+    .brand-pillar:hover { transform: none; }
+
+    .lifetime-grid { grid-template-columns: 1fr; }
+    .lifetime-col.active { order: -1; }
+
+    .ownership-grid { grid-template-columns: 1fr; }
+    .ownership-card { padding: 20px 16px; }
+
+    .split-box { grid-template-columns: 1fr; }
+    .split-col.ours { order: -1; }
+    .split-col { padding: 22px 18px; }
+
+    .process-step { gap: 18px; }
+
+    .cta-section { margin-top: 48px; padding-top: 40px; }
+
+    section { margin-bottom: 40px; padding-bottom: 40px; }
+    .footer { flex-direction: column; gap: 6px; }
+
+    /* disable some hover effects on touch */
+    .split-item:hover { padding-left: 0; }
+  }
+
+  /* Very small: 380px */
+  @media (max-width: 380px) {
+    .page-wrap { padding: 24px 16px 60px; }
+    .header h1 { font-size: 25px; }
+  }
+
+  /* ─── CURSOR DOT ─── */
+  #cursor-dot {
+    position: fixed;
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease, transform 0.15s ease;
+    opacity: 0;
+  }
+
+  @media (hover: none) {
+    #cursor-dot { display: none; }
+  }
+
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+<div id="cursor-dot"></div>
+
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="rule-line" style="margin-bottom: 32px;"></div>
+    <div class="header-kicker">
+      J Curve by Avi &nbsp;·&nbsp; YouTube Brief &nbsp;·&nbsp; May 2026
+      <span class="kicker-line"></span>
+    </div>
+    <h1>You Record Once.<br><em>We Handle Everything Else.</em></h1>
+    <div class="header-meta">
+      <span>Prepared for Felix &amp; Penn Frank · StackOptimise</span>
+      <span>·</span>
+      <span>Confidential</span>
+    </div>
+  </div>
+
+  <!-- LEDE -->
+  <div class="lede reveal">
+    <p>You've built one of the strongest personal brands in B2B outbound. LinkedIn every day. A 50K community. A 7K newsletter. A course. But YouTube — the one platform where your content works long after you post it — <strong>has been sitting without consistent attention for two months.</strong> This brief is about what it looks like when that changes, and how little it actually demands of you.</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <section>
+    <div class="section-label reveal stagger-1" data-num="01">The Personal Brand Case</div>
+    <h2 class="reveal stagger-2">LinkedIn Builds Your Reputation.<br>YouTube Makes It <em>Permanent.</em></h2>
+    <p class="reveal stagger-3">You already understand personal brand better than most people in this space. Penn said it himself: "The brand just compounds. Every piece of content builds on the last." That's exactly right. But LinkedIn and YouTube compound differently — and right now you're only getting one kind of compounding.</p>
+    <p class="reveal stagger-4">On LinkedIn, your content reaches people who already follow you, or who happen to scroll past it in 48 hours. It's powerful. But it's fleeting. YouTube works the other way — someone searches for "how to write a cold email that actually gets replies" in 2027, and your video from 2026 is the first thing they find. You didn't do anything new. The content just kept working.</p>
+
+    <div class="brand-pillars">
+      <div class="brand-pillar reveal stagger-1">
+        <div class="pillar-icon">Authority</div>
+        <div class="pillar-title">Own the GTM Engineering Space on YouTube</div>
+        <div class="pillar-body">In the cold email and GTM niche on YouTube, almost nobody is making technical, systems-level content with the depth you bring to LinkedIn. There's a real gap — and the expertise to fill it already exists inside StackOptimise. YouTube just needs to reflect that.</div>
+      </div>
+      <div class="brand-pillar reveal stagger-2">
+        <div class="pillar-icon">Trust</div>
+        <div class="pillar-title">12 Minutes Builds What 12 Posts Cannot</div>
+        <div class="pillar-body">Someone who watches a full Clay walkthrough or cold email breakdown trusts you at a different level than someone who liked a LinkedIn post. Long-form video builds people — it's the deepest trust format that exists online. Your expertise earns more in a 12-minute video than a month of short-form content.</div>
+      </div>
+      <div class="brand-pillar reveal stagger-3">
+        <div class="pillar-icon">Consistency</div>
+        <div class="pillar-title">Show Up Without Having to Think About It</div>
+        <div class="pillar-body">Right now the channel has been quiet for two months — not because the content isn't there, but because YouTube takes a different kind of effort to maintain consistently. Our job is to make consistency the default, not the exception. You record. Everything else runs without you.</div>
+      </div>
+      <div class="brand-pillar reveal stagger-4">
+        <div class="pillar-icon">Branding</div>
+        <div class="pillar-title">A Channel That Looks Like What You've Built</div>
+        <div class="pillar-body">Your LinkedIn presence has a clear visual identity and tone. Your YouTube channel right now doesn't match it — the thumbnails, the channel art, the structure aren't reflecting the brand you've actually built. We fix that from the ground up. Every video looks like StackOptimise.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section>
+    <div class="section-label reveal stagger-1" data-num="02">Why YouTube Works Differently</div>
+    <h2 class="reveal stagger-2">LinkedIn Is a Feed.<br>YouTube Is a Library.<br>One Works While You Sleep.</h2>
+    <p class="reveal stagger-3">The difference isn't about format — it's about how people find content and what they do when they find it. LinkedIn puts your content in front of people who are scrolling. YouTube puts your content in front of people who are searching for exactly what you know.</p>
+
+    <div class="lifetime-grid reveal stagger-4">
+      <div class="lifetime-col reveal-left">
+        <div class="lifetime-col-label">LinkedIn Post</div>
+        <div class="lifetime-col-title">48 Hours and It's Gone</div>
+        <div class="lifetime-row">
+          <span class="lifetime-key">How people find it</span>
+          <span class="lifetime-val">Algorithm feed</span>
+        </div>
+        <div class="lifetime-row">
+          <span class="lifetime-key">Audience intent</span>
+          <span class="lifetime-val">Browsing</span>
+        </div>
+        <div class="lifetime-row">
+          <span class="lifetime-key">Content lifespan</span>
+          <span class="lifetime-val">24–72 hours</span>
+        </div>
+        <div class="lifetime-row">
+          <span class="lifetime-key">Trust level built</span>
+          <span class="lifetime-val">Awareness</span>
+        </div>
+        <div class="lifetime-row">
+          <span class="lifetime-key">Searchable forever</span>
+          <span class="lifetime-val">No</span>
+        </div>
+      </div>
+      <div class="lifetime-col active reveal-right">
+        <div class="lifetime-col-label">YouTube Video</div>
+        <div class="lifetime-col-title">Keeps Working for Years</div>
+        <div class="lifetime-row">
+          <span class="lifetime-key">How people find it</span>
+          <span class="lifetime-val good">Search + Recommended</span>
+        </div>
+        <div class="lifetime-row">
+          <span class="lifetime-key">Audience intent</span>
+          <span class="lifetime-val good">Actively problem-solving</span>
+        </div>
+        <div class="lifetime-row">
+          <span class="lifetime-key">Content lifespan</span>
+          <span class="lifetime-val good">2–5+ years</span>
+        </div>
+        <div class="lifetime-row">
+          <span class="lifetime-key">Trust level built</span>
+          <span class="lifetime-val good">Deep — 10–15 min watch</span>
+        </div>
+        <div class="lifetime-row">
+          <span class="lifetime-key">Searchable forever</span>
+          <span class="lifetime-val good">Yes</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="insight-box reveal stagger-1">
+      <strong>Here's what this looks like practically:</strong> A video recorded in June 2026 on "How to Build a Clay Lead Enrichment System from Scratch" gets found in November 2027 by a founder who just decided to build their outbound motion. They watch 12 minutes of you walking through the system. They visit stackoptimise.com. They already know who you are, what you stand for, and why you're the right people to call. You did nothing new. The video just kept working.
+    </div>
+
+    <div class="reveal stagger-2" style="margin-top:28px;">
+      <p>Every video you post becomes a permanent entry point for someone to discover StackOptimise — through search, through YouTube recommendations, through a link someone shares in a Slack community. LinkedIn content doesn't do that. YouTube content does it indefinitely.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section>
+    <div class="section-label reveal stagger-1" data-num="03">How It Works</div>
+    <h2 class="reveal stagger-2">4 Videos a Month.<br>Zero Dependence on You<br>Beyond the Recording.</h2>
+    <p class="reveal stagger-3">This is the part that matters most practically. You're already busy running a $3M ARR agency, posting on LinkedIn every day, running a newsletter, and building a course. YouTube has gone quiet because it demands a different kind of sustained effort. We remove that entirely.</p>
+
+    <div class="split-box reveal stagger-4">
+      <div class="split-col">
+        <div class="split-col-label">What You Do</div>
+        <div class="split-item">Record the video — roughly 30–45 minutes of your time</div>
+        <div class="split-item">Review and approve before it goes live</div>
+        <div class="split-item">That's it</div>
+      </div>
+      <div class="split-col ours">
+        <div class="split-col-label">What We Handle</div>
+        <div class="split-item">Full content calendar built from your existing LinkedIn posts and newsletter</div>
+        <div class="split-item">Script and structure delivered before you record</div>
+        <div class="split-item">Complete editing, captions, chapters, screen recordings, motion graphics</div>
+        <div class="split-item">SEO-optimised titles, descriptions, and tags written for search intent</div>
+        <div class="split-item">Thumbnails designed for click-through in the B2B/GTM niche</div>
+        <div class="split-item">Channel branding built to match your existing visual identity</div>
+        <div class="split-item">Upload, scheduling, community tab, pinned comments — fully managed</div>
+        <div class="split-item">3–4 short clips repurposed back to LinkedIn and Instagram per video</div>
+      </div>
+    </div>
+
+    <div class="ownership-grid">
+      <div class="ownership-card reveal stagger-1">
+        <div class="own-label">Cadence</div>
+        <div class="own-title">4 Videos<br>a Month</div>
+        <div class="own-body">Consistent posting schedule — every week, without gaps. Consistency is what the YouTube algorithm rewards and what personal brands are built on.</div>
+      </div>
+      <div class="ownership-card reveal stagger-2">
+        <div class="own-label">Your Time</div>
+        <div class="own-title">Record<br>Once</div>
+        <div class="own-body">One recording session per video. Roughly 30–45 minutes. Script in hand, structure ready. Everything after is ours to handle.</div>
+      </div>
+      <div class="ownership-card reveal stagger-3">
+        <div class="own-label">Output</div>
+        <div class="own-title">10+ Pieces<br>of Content</div>
+        <div class="own-body">Every recording becomes a YouTube video, 3–4 LinkedIn clips, and 2 Instagram Reels. Your existing channels get more — not less.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section>
+    <div class="section-label reveal stagger-1" data-num="04">What Gets Built</div>
+    <h2 class="reveal stagger-2">A Channel That Finally Reflects<br>What StackOptimise Has Built.</h2>
+    <p class="reveal stagger-3">Beyond the individual videos, the goal is a YouTube channel that functions as a permanent, branded home for your expertise — one that someone can land on and immediately understand who you are, what you stand for, and why you're worth listening to.</p>
+
+    <div class="process-steps">
+      <div class="process-step reveal stagger-1">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <div class="step-title">Channel Branding from the Ground Up</div>
+          <div class="step-desc">Banner, profile, channel description, playlists, pinned video — every element rebuilt to match the visual identity and tone you've established on LinkedIn. Right now the channel doesn't look like what you've built. We fix that before the first new video goes live.</div>
+          <div class="step-detail">One-time setup · permanent foundation</div>
+        </div>
+      </div>
+      <div class="process-step reveal stagger-2">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <div class="step-title">Thumbnail System Designed for Your Niche</div>
+          <div class="step-desc">Consistent thumbnail templates built specifically for the B2B/GTM space — bold, specific, recognisable. Every video looks like StackOptimise without needing to rebuild the design each time. Consistency in thumbnails trains the audience to recognise you before they even read the title.</div>
+          <div class="step-detail">Template system · A/B tested per video</div>
+        </div>
+      </div>
+      <div class="process-step reveal stagger-3">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <div class="step-title">Content Plan Built from What You Already Post</div>
+          <div class="step-desc">Your LinkedIn content is a ready-made video script library. Your newsletter issues are tutorial outlines. Your most engaged posts are video ideas with proven resonance. We build a 90-day content calendar entirely from material that already exists — no new ideation required from your end.</div>
+          <div class="step-detail">90-day calendar delivered upfront · refreshed monthly</div>
+        </div>
+      </div>
+      <div class="process-step reveal stagger-4">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <div class="step-title">SEO Infrastructure That Compounds Over Time</div>
+          <div class="step-desc">Every video is titled, tagged, and described for search intent — not just for people who already know you. This is a long-term play. A video optimised today for "how to build a cold email sequence in Clay" keeps getting found for years. The library builds. The discoverability compounds.</div>
+          <div class="step-detail">Keyword research per video · search-intent validated titles</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-section reveal">
+    <h2>You've built the brand.<br>Let YouTube <em>carry it forward.</em></h2>
+    <p>No new ideas, no extra research, no managing another channel. Just 30 minutes to talk through what the first 90 days look like — and what the channel looks like by the end of them.</p>
+    <div class="cta-contact">
+      <div class="from-label">Prepared by</div>
+      <div class="from-name">Avi Sharma</div>
+      <div class="from-agency">J Curve by Avi · Full-Service Digital Marketing</div>
+      <div class="from-email">avi@jcurvebyavi.com</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer reveal">
+    <span>J Curve by Avi · Confidential · May 2026</span>
+    <span>Prepared exclusively for Felix &amp; Penn Frank · StackOptimise</span>
+  </div>
+
+</div><!-- /page-wrap -->
+
+<script>
+// ─── SCROLL PROGRESS BAR ───────────────────────────────────
+const bar = document.getElementById('progress-bar');
+function updateProgress() {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  bar.style.width = pct + '%';
+}
+window.addEventListener('scroll', updateProgress, { passive: true });
+
+// ─── ANIMATED RULE LINE (header) ─────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    document.querySelector('.rule-line')?.classList.add('in');
+  }, 80);
+});
+
+// ─── INTERSECTION OBSERVER for scroll reveals ────────────
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .rule-line-thin');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.08,
+  rootMargin: '0px 0px -40px 0px'
+});
+
+revealEls.forEach(el => observer.observe(el));
+
+// ─── CURSOR DOT ───────────────────────────────────────────
+const dot = document.getElementById('cursor-dot');
+let dotVisible = false;
+let mouseX = 0, mouseY = 0;
+let dotX = 0, dotY = 0;
+let rafId;
+
+function lerp(a, b, t) { return a + (b - a) * t; }
+
+function animateDot() {
+  dotX = lerp(dotX, mouseX, 0.18);
+  dotY = lerp(dotY, mouseY, 0.18);
+  dot.style.left = dotX + 'px';
+  dot.style.top  = dotY + 'px';
+  rafId = requestAnimationFrame(animateDot);
+}
+
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  if (!dotVisible) {
+    dot.style.opacity = '1';
+    dotVisible = true;
+    dotX = mouseX; dotY = mouseY;
+  }
+}, { passive: true });
+
+document.addEventListener('mouseleave', () => {
+  dot.style.opacity = '0';
+  dotVisible = false;
+});
+
+// scale dot on hoverable elements
+const hoverTargets = document.querySelectorAll('.brand-pillar, .cta-contact, .process-step, .ownership-card');
+hoverTargets.forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    dot.style.transform = 'translate(-50%,-50%) scale(3)';
+    dot.style.background = 'transparent';
+    dot.style.border = '1.5px solid var(--accent)';
+  });
+  el.addEventListener('mouseleave', () => {
+    dot.style.transform = 'translate(-50%,-50%) scale(1)';
+    dot.style.background = 'var(--accent)';
+    dot.style.border = 'none';
+  });
+});
+
+animateDot();
+
+// ─── LEDE paragraph — word-fade-in on first view ─────────
+const ledeEl = document.querySelector('.lede');
+const ledeP  = ledeEl?.querySelector('p');
+
+if (ledeP) {
+  // split into words, wrapping each in a span
+  const rawHtml = ledeP.innerHTML;
+  // Simple approach: split text nodes, preserve strong tags
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = rawHtml;
+  
+  function wrapWords(node) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      const words = node.textContent.split(/(\s+)/);
+      const frag = document.createDocumentFragment();
+      words.forEach((w, i) => {
+        if (/^\s+$/.test(w) || w === '') {
+          frag.appendChild(document.createTextNode(w));
+        } else {
+          const span = document.createElement('span');
+          span.className = 'word-reveal';
+          span.style.cssText = `
+            opacity: 0;
+            transform: translateY(8px);
+            display: inline-block;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+          `;
+          span.textContent = w;
+          frag.appendChild(span);
+        }
+      });
+      node.parentNode.replaceChild(frag, node);
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      [...node.childNodes].forEach(wrapWords);
+    }
+  }
+
+  wrapWords(tempDiv);
+  ledeP.innerHTML = '';
+  ledeP.appendChild(tempDiv);
+
+  // fire when lede enters viewport
+  const ledeObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const words = ledeP.querySelectorAll('.word-reveal');
+        words.forEach((w, i) => {
+          setTimeout(() => {
+            w.style.opacity = '1';
+            w.style.transform = 'translateY(0)';
+          }, i * 22);
+        });
+        ledeObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  ledeObs.observe(ledeEl);
+}
+
+// ─── PROCESS STEP — counter tick ─────────────────────────
+const stepNums = document.querySelectorAll('.step-num');
+const stepObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.textContent, 10);
+      let current = 0;
+      const interval = setInterval(() => {
+        current++;
+        el.textContent = String(current).padStart(2, '0');
+        if (current >= target) clearInterval(interval);
+      }, 60);
+      stepObs.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+
+stepNums.forEach(el => stepObs.observe(el));
+
+// ─── SECTION BORDER DRAW on scroll ───────────────────────
+// Animate the bottom border of each section as a drawing line
+const sections = document.querySelectorAll('section');
+sections.forEach(sec => {
+  sec.style.borderBottom = 'none';
+  const line = document.createElement('div');
+  line.className = 'rule-line-thin';
+  line.style.marginTop = '64px';
+  sec.appendChild(line);
+
+  observer.observe(line);
+});
+
+</script>
+</body>
+</html>
