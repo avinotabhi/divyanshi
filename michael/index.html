@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You've Done the Hard Part — Michael Gardiner</title>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://withjcurve.com/michael" />
+<meta property="og:title" content="9 Years of Knowledge. A Channel That Should Be Running Itself." />
+<meta property="og:description" content="A short brief on what a fully managed YouTube channel looks like for Michael Gardiner — so the expertise you've built over 9 years keeps working without demanding more from you." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="9 Years of Knowledge. A Channel That Should Be Running Itself." />
+<meta name="twitter:description" content="A short brief on what a fully managed YouTube channel looks like for Michael Gardiner — so the expertise you've built keeps working without demanding more from you." />
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0e0e;
+    --paper: #f5f0e8;
+    --paper-dark: #ede7d4;
+    --accent: #c8390a;
+    --accent-muted: #e8b99a;
+    --muted: #7a7060;
+    --rule: #cfc9b8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 48px 100px;
+  }
+
+  .header {
+    border-top: 3px solid var(--ink);
+    padding-top: 32px;
+    margin-bottom: 56px;
+  }
+
+  .header-kicker {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .header-kicker::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(34px, 5vw, 52px);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+
+  .header h1 em { font-style: italic; color: var(--accent); }
+
+  .header-meta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .lede {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 40px 44px;
+    margin-bottom: 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lede::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 180px;
+    color: rgba(255,255,255,0.06);
+    position: absolute;
+    top: -30px;
+    left: 20px;
+    line-height: 1;
+  }
+
+  .lede p {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-style: italic;
+    line-height: 1.55;
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+  }
+
+  .lede p strong {
+    font-style: normal;
+    color: var(--accent-muted);
+    font-weight: 700;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-label::before {
+    content: attr(data-num);
+    color: var(--accent);
+    font-size: 12px;
+  }
+
+  section {
+    margin-bottom: 64px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  section p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 16px;
+    max-width: 660px;
+  }
+
+  .insight-box {
+    background: var(--paper-dark);
+    border-left: 3px solid var(--accent);
+    padding: 24px 28px;
+    font-size: 15px;
+    color: #333;
+    line-height: 1.7;
+    margin: 28px 0;
+  }
+
+  .insight-box strong { color: var(--ink); font-weight: 500; }
+
+  /* LIFETIME GRID */
+  .lifetime-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 32px 0;
+  }
+
+  .lifetime-col { background: var(--paper); padding: 28px 24px; }
+  .lifetime-col.active { background: var(--ink); color: var(--paper); }
+
+  .lifetime-col-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .lifetime-col.active .lifetime-col-label { color: var(--accent-muted); }
+
+  .lifetime-col-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .lifetime-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .lifetime-col.active .lifetime-row { border-bottom-color: rgba(255,255,255,0.1); }
+  .lifetime-row:last-child { border-bottom: none; }
+  .lifetime-key { color: var(--muted); }
+  .lifetime-col.active .lifetime-key { color: rgba(255,255,255,0.5); }
+  .lifetime-val { font-weight: 500; }
+  .lifetime-col.active .lifetime-val { color: var(--paper); }
+  .lifetime-val.good { color: #4a9c6f; }
+
+  /* VIDEO IDEAS */
+  .video-list {
+    margin: 32px 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .video-item {
+    display: flex;
+    gap: 24px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .video-item:last-child { border-bottom: none; }
+
+  .video-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    min-width: 28px;
+    padding-top: 3px;
+    flex-shrink: 0;
+  }
+
+  .video-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  .video-source {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .video-desc {
+    font-size: 13px;
+    color: #444;
+    line-height: 1.6;
+  }
+
+  /* SPLIT BOX */
+  .split-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 32px 0;
+  }
+
+  .split-col { padding: 28px 24px; background: var(--paper-dark); }
+  .split-col.ours { background: var(--ink); color: var(--paper); }
+
+  .split-col-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .split-col.ours .split-col-label { color: var(--accent-muted); }
+
+  .split-item {
+    font-size: 14px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--rule);
+    color: #333;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .split-col.ours .split-item {
+    border-bottom-color: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.85);
+  }
+
+  .split-item:last-child { border-bottom: none; }
+
+  .split-item::before {
+    content: '—';
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* CADENCE */
+  .cadence-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 32px 0;
+  }
+
+  .cadence-card {
+    background: var(--paper);
+    padding: 24px 20px;
+    text-align: center;
+  }
+
+  .cadence-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .cadence-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .cadence-body {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* CTA */
+  .cta-section {
+    margin-top: 72px;
+    padding-top: 56px;
+    border-top: 3px solid var(--ink);
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .cta-section h2 em { font-style: italic; color: var(--accent); }
+
+  .cta-section p {
+    font-size: 16px;
+    color: #444;
+    max-width: 540px;
+    margin: 0 auto 36px;
+    line-height: 1.65;
+  }
+
+  .cta-contact {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 32px 48px;
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .from-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-muted);
+    margin-bottom: 4px;
+  }
+
+  .from-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .from-agency { font-size: 13px; color: rgba(255,255,255,0.6); }
+
+  .from-email {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent-muted);
+    margin-top: 4px;
+  }
+
+  .footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 40px 24px 80px; }
+    .lifetime-grid, .split-box, .cadence-grid { grid-template-columns: 1fr; }
+    .footer { flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-kicker">J Curve by Avi &nbsp;·&nbsp; YouTube Brief &nbsp;·&nbsp; May 2026</div>
+  <h1>9 Years of Knowledge.<br>A Channel That Should<br><em>Be Running Itself.</em></h1>
+  <div class="header-meta">
+    <span>Prepared for Michael Gardiner · DFY Meetings / Grow B2B</span>
+    <span>·</span>
+    <span>Confidential</span>
+  </div>
+</div>
+
+<!-- LEDE -->
+<div class="lede">
+  <p>You've been building in the cold email space longer than most people have been paying attention to it. The knowledge is there. The credibility is there. <strong>The YouTube channel should be the one thing that runs without you having to push it every week.</strong> Right now it isn't — and that's a fixable problem.</p>
+</div>
+
+<!-- SECTION 1 -->
+<section>
+  <div class="section-label" data-num="01">The Situation</div>
+  <h2>The Channel Has Gone Quiet.<br>That's What Happens Without<br><em>a System Behind It.</em></h2>
+  <p>You've been building in this space longer than most people have been paying attention to it. The knowledge is there. The credibility is there. But YouTube without a dedicated system behind it becomes just another thing competing for your attention — and eventually it loses.</p>
+  <p>When there's no editor, no content calendar, no consistent posting schedule — the channel goes quiet. Not because the content dried up. Because there was no infrastructure keeping it moving without you.</p>
+
+  <div class="insight-box">
+    <strong>Here's what that costs:</strong> Every week the channel is quiet, someone searching "how to start a B2B lead generation agency" or "cold email strategy 2026" finds someone else's video instead of yours. You have 9 years of answers to those questions. The channel just isn't consistently putting them in front of the people searching for them.
+  </div>
+</section>
+
+<!-- SECTION 2 -->
+<section>
+  <div class="section-label" data-num="02">Why YouTube Specifically</div>
+  <h2>LinkedIn Posts Disappear.<br>YouTube Videos <em>Compound.</em></h2>
+  <p>You've been in this long enough to know that the best business assets are the ones that keep working after you stop touching them. YouTube is the only content platform that works that way. A video you record today on cold email strategy keeps getting found in 2028 by someone actively searching for exactly what you know. LinkedIn doesn't do that. Instagram doesn't do that.</p>
+
+  <div class="lifetime-grid">
+    <div class="lifetime-col">
+      <div class="lifetime-col-label">LinkedIn / Instagram Post</div>
+      <div class="lifetime-col-title">48 Hours and It's Gone</div>
+      <div class="lifetime-row">
+        <span class="lifetime-key">How people find it</span>
+        <span class="lifetime-val">Algorithm feed</span>
+      </div>
+      <div class="lifetime-row">
+        <span class="lifetime-key">Audience intent</span>
+        <span class="lifetime-val">Browsing</span>
+      </div>
+      <div class="lifetime-row">
+        <span class="lifetime-key">Content lifespan</span>
+        <span class="lifetime-val">24–72 hours</span>
+      </div>
+      <div class="lifetime-row">
+        <span class="lifetime-key">Trust built</span>
+        <span class="lifetime-val">Awareness level</span>
+      </div>
+      <div class="lifetime-row">
+        <span class="lifetime-key">Searchable forever</span>
+        <span class="lifetime-val">No</span>
+      </div>
+    </div>
+    <div class="lifetime-col active">
+      <div class="lifetime-col-label">YouTube Video</div>
+      <div class="lifetime-col-title">Keeps Working for Years</div>
+      <div class="lifetime-row">
+        <span class="lifetime-key">How people find it</span>
+        <span class="lifetime-val good">Search + Recommended</span>
+      </div>
+      <div class="lifetime-row">
+        <span class="lifetime-key">Audience intent</span>
+        <span class="lifetime-val good">Actively problem-solving</span>
+      </div>
+      <div class="lifetime-row">
+        <span class="lifetime-key">Content lifespan</span>
+        <span class="lifetime-val good">2–5+ years</span>
+      </div>
+      <div class="lifetime-row">
+        <span class="lifetime-key">Trust built</span>
+        <span class="lifetime-val good">Deep — 10–20 min watch</span>
+      </div>
+      <div class="lifetime-row">
+        <span class="lifetime-key">Searchable forever</span>
+        <span class="lifetime-val good">Yes</span>
+      </div>
+    </div>
+  </div>
+
+  <p>For someone building GrowB2B — a community of agency owners learning the craft — YouTube is the single best top-of-funnel asset you could have. Someone finds your video on how to start a lead gen agency, watches 20 minutes, and arrives at growb2b.io already sold on who you are. That's a warm lead generated by content you recorded once.</p>
+</section>
+
+<!-- SECTION 3 -->
+<section>
+  <div class="section-label" data-num="03">5 Videos Already Inside What You've Built</div>
+  <h2>The Content Exists.<br>It Just Needs to <em>Be Made.</em></h2>
+  <p>Everything below comes directly from your existing content, your case studies, and what you do every day at DFY Meetings and GrowB2B. No new ideas. No new research. Just formats that already work — moved to the platform where they keep working indefinitely.</p>
+
+  <div class="video-list">
+    <div class="video-item">
+      <div class="video-num">01</div>
+      <div>
+        <div class="video-source">Source: GrowB2B community · student results</div>
+        <div class="video-title">"How Eugene Levy Went from $0 to $10,000/month Running a B2B Lead Gen Agency (Full Story)"</div>
+        <div class="video-desc">You already interviewed Eugene. The content exists. With proper editing, a clean thumbnail, and an SEO-optimised title, this becomes one of the most searchable videos in the agency-building niche — someone typing "how to start a lead gen agency" at 11pm finds this video and spends 20 minutes with you before they've ever heard of GrowB2B.</div>
+      </div>
+    </div>
+    <div class="video-item">
+      <div class="video-num">02</div>
+      <div>
+        <div class="video-source">Source: DFY Meetings client work · 9 years of campaigns</div>
+        <div class="video-title">"The Cold Email Infrastructure We Build for 240+ B2B Companies (Step-by-Step)"</div>
+        <div class="video-desc">You own the system, data, copy, and documentation — that's the DFY Meetings promise. A full walkthrough of exactly what that infrastructure looks like is one of the highest-value videos in the cold email space. Nobody else can make this video the way you can. It's specific, it's proven, and it gets searched every single day.</div>
+      </div>
+    </div>
+    <div class="video-item">
+      <div class="video-num">03</div>
+      <div>
+        <div class="video-source">Source: GrowB2B Live event · Chiang Mai mastermind</div>
+        <div class="video-title">"What I Learned Running a Live Mastermind for 20 Agency Owners in Chiang Mai"</div>
+        <div class="video-desc">The GrowB2B Live event in Chiang Mai is a story that writes itself — 20 agency owners, two days of sessions, speakers on affiliate systems, YouTube strategy, Upwork. A candid, personal breakdown of what actually happened, what was discussed, and what the room agreed on. This format — honest event recaps — consistently performs in the agency-building niche and builds community faster than any ad.</div>
+      </div>
+    </div>
+    <div class="video-item">
+      <div class="video-num">04</div>
+      <div>
+        <div class="video-source">Source: DFY Meetings model · client offboarding system</div>
+        <div class="video-title">"Why Our Clients Don't Pay Us Forever (And How That Makes Us More Money)"</div>
+        <div class="video-desc">Your model is genuinely unusual — clients own the system, you train their team, they bring it in-house. Most agencies do the opposite. That counterintuitive positioning is a YouTube hook that almost guarantees clicks. The title creates curiosity, the content builds trust, and the CTA points to dfymeetings.com. One of the strongest lead gen videos you could make.</div>
+      </div>
+    </div>
+    <div class="video-item">
+      <div class="video-num">05</div>
+      <div>
+        <div class="video-source">Source: 9 years building remotely across 40+ countries</div>
+        <div class="video-title">"9 Years, 40 Countries, 3 Exits: What I Actually Learned About Building a Remote Agency"</div>
+        <div class="video-desc">This is the video that cements personal brand at a different level than any tutorial. You've done something genuinely rare — built and exited multiple agencies while traveling the world. The story is compelling to anyone building a location-independent business, which is a massive and growing YouTube audience. Once recorded, this video works as a channel trailer, a trust-builder, and a top-of-funnel piece for years.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4 -->
+<section>
+  <div class="section-label" data-num="04">How It Works</div>
+  <h2>You Record Once.<br><em>We Run Everything Else.</em><br>No Direction Needed from You.</h2>
+  <p>The reason the channel goes quiet isn't lack of content or knowledge — it's that YouTube without a dedicated team behind it demands constant attention. Editing, thumbnails, SEO, scheduling, community management — all of it competes with running DFY Meetings, building GrowB2B, and actually living the life you've spent 9 years building. We remove that entirely.</p>
+
+  <div class="split-box">
+    <div class="split-col">
+      <div class="split-col-label">What You Do</div>
+      <div class="split-item">Record the video — 30 to 45 minutes of your time</div>
+      <div class="split-item">Review and approve before it goes live</div>
+      <div class="split-item">That's it. The channel runs without you.</div>
+    </div>
+    <div class="split-col ours">
+      <div class="split-col-label">What We Handle</div>
+      <div class="split-item">Full content calendar built from your existing content and case studies</div>
+      <div class="split-item">Script and structure delivered before you hit record</div>
+      <div class="split-item">Complete editing, captions, chapters, and screen recordings</div>
+      <div class="split-item">SEO-optimised titles, descriptions, and tags per video</div>
+      <div class="split-item">Thumbnails designed for click-through in the B2B agency niche</div>
+      <div class="split-item">Channel branding rebuilt to match what you've built at DFY Meetings and GrowB2B</div>
+      <div class="split-item">Upload, scheduling, and community management — fully handled</div>
+      <div class="split-item">Short clips repurposed back to LinkedIn and Instagram per video</div>
+    </div>
+  </div>
+
+  <div class="cadence-grid">
+    <div class="cadence-card">
+      <div class="cadence-label">Cadence</div>
+      <div class="cadence-title">4 Videos a Month</div>
+      <div class="cadence-body">Consistent weekly posting — no more quiet spells. The channel keeps moving whether you're in Chiang Mai or Stuart.</div>
+    </div>
+    <div class="cadence-card">
+      <div class="cadence-label">Your Time</div>
+      <div class="cadence-title">Record Once</div>
+      <div class="cadence-body">Script ready, structure set. One session per video. Everything after that runs without you touching it.</div>
+    </div>
+    <div class="cadence-card">
+      <div class="cadence-label">Output</div>
+      <div class="cadence-title">10+ Pieces</div>
+      <div class="cadence-body">Every recording becomes a YouTube video, LinkedIn clips, and Instagram content. Your other channels get more as a byproduct.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>9 years of knowledge.<br><em>Let the channel carry it forward</em><br>without adding to your plate.</h2>
+  <p>You've done the hard part. The expertise is built. The credibility is there. Just 30 minutes to talk through what the first 90 days look like — and what the channel looks like when it's finally running the way it should.</p>
+  <div class="cta-contact">
+    <div class="from-label">Prepared by</div>
+    <div class="from-name">Avi Sharma</div>
+    <div class="from-agency">J Curve by Avi · Full-Service Digital Marketing</div>
+    <div class="from-email">avi@jcurvebyavi.com</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span>J Curve by Avi · Confidential · May 2026</span>
+  <span>Prepared exclusively for Michael Gardiner · DFY Meetings / Grow B2B</span>
+</div>
+
+</body>
+</html>
